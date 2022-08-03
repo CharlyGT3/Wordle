@@ -1,0 +1,38 @@
+#winner {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    width: 100%;
+    height: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.winnerContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 200px;
+    border-radius: 20px;
+    background-color: black;
+}
+
+.winnerContainer > div {
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.winnerContainer > button {
+    width: 200px;
+    height: 60px;
+    border: none;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px;
+}

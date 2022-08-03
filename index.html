@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="start.css" />
+    <link rel="stylesheet" href="gameOver.css" />
+    <link rel="stylesheet" href="winner.css" />
+</head>
+
+<body>
+    <h1 class="effect1">Wordle</h1>
+    <div class="menssageContainer"></div>
+    <div class="tileContainer">
+        <div id="row-1" class="row">
+            <div id="box-1-row-1" class="box effect1"></div>
+            <div id="box-2-row-1" class="box effect1"></div>
+            <div id="box-3-row-1" class="box effect1"></div>
+            <div id="box-4-row-1" class="box effect1"></div>
+            <div id="box-5-row-1" class="box effect1"></div>
+        </div>
+        <div id="row-2" class="row">
+            <div id="box-1-row-2" class="box effect1"></div>
+            <div id="box-2-row-2" class="box effect1"></div>
+            <div id="box-3-row-2" class="box effect1"></div>
+            <div id="box-4-row-2" class="box effect1"></div>
+            <div id="box-5-row-2" class="box effect1"></div>
+        </div>
+        <div id="row-3" class="row">
+            <div id="box-1-row-3" class="box effect1"></div>
+            <div id="box-2-row-3" class="box effect1"></div>
+            <div id="box-3-row-3" class="box effect1"></div>
+            <div id="box-4-row-3" class="box effect1"></div>
+            <div id="box-5-row-3" class="box effect1"></div>
+        </div>
+        <div id="row-4" class="row">
+            <div id="box-1-row-4" class="box effect1"></div>
+            <div id="box-2-row-4" class="box effect1"></div>
+            <div id="box-3-row-4" class="box effect1"></div>
+            <div id="box-4-row-4" class="box effect1"></div>
+            <div id="box-5-row-4" class="box effect1"></div>
+        </div>
+        <div id="row-5" class="row">
+            <div id="box-1-row-5" class="box effect1"></div>
+            <div id="box-2-row-5" class="box effect1"></div>
+            <div id="box-3-row-5" class="box effect1"></div>
+            <div id="box-4-row-5" class="box effect1"></div>
+            <div id="box-5-row-5" class="box effect1"></div>
+        </div>
+    </div>
+    <div id="start" onclick="startTimer()">
+        <div class="startContainer">
+            <button id="btnStart">Start Game</button>
+        </div>
+    </div>
+    <div id="gameOver">
+        <div class="gameOverContainer">
+            <div>Game Over</div>
+            <button id="btnRestartGO">Restart</button>
+        </div>
+    </div>
+    <div id="winner">
+        <div class="winnerContainer">
+            <div>Congratulations!!</div>
+            <div>Winner!!</div>
+            <button id="btnRestartW">Restart</button>
+            <div id="youTime"></div>
+        </div>
+    </div>
+    <div class="keyContainer"></div>
+    <script type="module" src="main.js"></script>
+    <script defer src="timer.js"></script>
+</body>
+
+</html>
