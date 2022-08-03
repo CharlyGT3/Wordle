@@ -1,7 +1,7 @@
 const timer = document.querySelector(".menssageContainer");
-let timerInterval;
+export let timerInterval;
 
-startTimer = () => {
+export const startTimer = () => {
     clearInterval(timerInterval);
     let second = 0,
         minute = 0,

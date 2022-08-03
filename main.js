@@ -1,139 +1,12 @@
 import { WORDS } from './words';
-import { keys } from './keys';
+import { keys, $ } from './keys';
+import { timerInterval } from './timer'
 
-const $ = (elements) => document.getElementById(elements);
 const keyboard = document.querySelector(".keyContainer");
-
-const btnStart = $("btnStart");
-
-btnStart.addEventListener("click", () => {
-    $("start").style.display = "none";
-    window.addEventListener("keydown", function (event) {
-        if (event.defaultPrevented) {
-            return;
-        }
-        switch (event.key) {
-            case 'Q':
-            case 'q':
-                $('Q').click()
-                break;
-            case 'W':
-            case 'w':
-                $('W').click()
-                break;
-            case 'E':
-            case 'e':
-                $('E').click()
-                break;
-            case 'R':
-            case 'r':
-                $('R').click()
-                break;
-            case 'T':
-            case 't':
-                $('T').click()
-                break;
-            case 'Y':
-            case 'y':
-                $('Y').click()
-                break;
-            case 'U':
-            case 'u':
-                $('U').click()
-                break;
-            case 'I':
-            case 'i':
-                $('I').click()
-                break;
-            case 'O':
-            case 'o':
-                $('O').click()
-                break;
-            case 'P':
-            case 'p':
-                $('P').click()
-                break;
-            case 'A':
-            case 'a':
-                $('A').click()
-                break;
-            case 'S':
-            case 's':
-                $('S').click()
-                break;
-            case 'D':
-            case 'd':
-                $('D').click()
-                break;
-            case 'F':
-            case 'f':
-                $('F').click()
-                break;
-            case 'G':
-            case 'g':
-                $('G').click()
-                break;
-            case 'H':
-            case 'h':
-                $('H').click()
-                break;
-            case 'J':
-            case 'j':
-                $('J').click()
-                break;
-            case 'K':
-            case 'k':
-                $('K').click()
-                break;
-            case 'L':
-            case 'l':
-                $('L').click()
-                break;
-            case 'Z':
-            case 'z':
-                $('Z').click()
-                break;
-            case 'X':
-            case 'x':
-                $('X').click()
-                break;
-            case 'C':
-            case 'c':
-                $('C').click()
-                break;
-            case 'V':
-            case 'v':
-                $('V').click()
-                break;
-            case 'B':
-            case 'b':
-                $('B').click()
-                break;
-            case 'N':
-            case 'n':
-                $('N').click()
-                break;
-            case 'M':
-            case 'm':
-                $('M').click()
-                break;
-            case 'Enter':
-                $('ENTER').click()
-                break;
-            case 'Backspace':
-                $('«').click()
-                break;
-            default:
-                return;
-        }
-        event.preventDefault();
-    }, true);
-});
 
 let word = WORDS[Math.floor(Math.random() * WORDS.length)]
 console.log(word);
-// let word = "CASAS"
-let isWord = ""
+let isWord = "";
 let currentRow = 1;
 let currentBox = 1;
 let values = [
@@ -163,7 +36,7 @@ function handleClick(key) {
                 checkRow();
                 winner();
             }
-            else if(WORDS.includes(isWord)){
+            else if (WORDS.includes(isWord)) {
                 checkRow();
                 nextRow();
             }
@@ -207,21 +80,24 @@ function checkRow() {
 
     for (let i = 0; i < children.length; i++) {
         let childText = children[i].textContent;
+        setTimeout(() => {
+            children[i].classList.add("flip");
 
-        if (childText === word[i]) {
-            children[i].style.backgroundColor = "green";
-            $(childText).style.backgroundColor = "green";
+            if (childText === word[i]) {
+                children[i].style.backgroundColor = "green";
+                $(childText).style.backgroundColor = "green";
 
-        } else if (word.includes(childText)) {
-            children[i].style.backgroundColor = "yellow";
+            } else if (word.includes(childText)) {
+                children[i].style.backgroundColor = "yellow";
 
-            if ($(childText).style.backgroundColor !== "green") {
-                $(childText).style.backgroundColor = "yellow";
+                if ($(childText).style.backgroundColor !== "green") {
+                    $(childText).style.backgroundColor = "yellow";
+                }
+
+            } else {
+                children[i].style.backgroundColor = "gray";
             }
-
-        } else {
-            children[i].style.backgroundColor = "gray";
-        }
+        }, 500 * [i])
     }
 }
 

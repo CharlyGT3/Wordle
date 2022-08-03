@@ -1,3 +1,5 @@
+export const $ = (elements) => document.getElementById(elements);
+
 export const keys = [
     'Q',
     'W',
