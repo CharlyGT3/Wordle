@@ -130,7 +130,7 @@ btnStart.addEventListener("click", () => {
     }, true);
 });
 
-let word = WORDS[Math.floor(Math.random() * WORDS.length)].toUpperCase()
+let word = WORDS[Math.floor(Math.random() * WORDS.length)]
 console.log(word);
 // let word = "CASAS"
 let isWord = ""
@@ -158,11 +158,16 @@ function handleClick(key) {
     }
     else if (key === 'ENTER') {
         if (currentBox === 6 && currentRow < 6) {
-            checkRow();
+            isWord = values[currentRow - 1].join("");
             if (isWord === word) {
+                checkRow();
                 winner();
-            } else {
+            }
+            else if(WORDS.includes(isWord)){
+                checkRow();
                 nextRow();
+            }
+            else {
             }
         }
         if (currentRow === 6) {
@@ -198,7 +203,6 @@ function nextRow() {
 };
 
 function checkRow() {
-    isWord = values[currentRow - 1].join("");
     let children = $("row-" + currentRow).children;
 
     for (let i = 0; i < children.length; i++) {
