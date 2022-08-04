@@ -115,3 +115,7 @@ h1 {
       transform: rotateX(0deg);
   }
 }
+
+.audio{
+  display: none
+  }

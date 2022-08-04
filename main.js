@@ -3,6 +3,10 @@ import { keys, $ } from './keys';
 import { timerInterval } from './timer'
 
 const keyboard = document.querySelector(".keyContainer");
+let winAudio = $("winAudio");
+let letterAudio = $("letterAudio");
+let gameOverAudio = $("gameOverAudio");
+
 
 let word = WORDS[Math.floor(Math.random() * WORDS.length)]
 console.log(word);
@@ -55,6 +59,7 @@ function handleClick(key) {
 
 function addLetter(key) {
     if (currentBox < 6 && currentRow < 6) {
+        letterAudio.play();
         const box = $("box-" + currentBox + "-row-" + currentRow);
         box.textContent = key;
         values[currentRow - 1][currentBox - 1] = key;
@@ -64,6 +69,7 @@ function addLetter(key) {
 
 function deleteLetter() {
     if (currentBox > 1) {
+        letterAudio.play();
         currentBox--;
         const box = $("box-" + currentBox + "-row-" + currentRow);
         box.textContent = "";
@@ -105,6 +111,7 @@ function checkRow() {
 }
 
 function gameOver() {
+    gameOverAudio.play();
     $("gameOver").style.display = "flex";
     clearInterval(timerInterval);
     $("btnRestartGO").addEventListener("click", function () {
@@ -113,6 +120,7 @@ function gameOver() {
 }
 
 function winner() {
+    winAudio.play();
     $("winner").style.display = "flex";
     let myTime = document.querySelector(".menssageContainer");
     let youTimeIs = $("youTime")
