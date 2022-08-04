@@ -15,7 +15,8 @@ let values = [
     ['', '', '', '', ''],
     ['', '', '', '', ''],
     ['', '', '', '', '']
-]
+];
+let noRepeat = [[],[],[],[],[]];
 
 keys.forEach(key => {
     const buttonElement = document.createElement('button');
@@ -87,8 +88,10 @@ function checkRow() {
                 children[i].style.backgroundColor = "green";
                 $(childText).style.backgroundColor = "green";
 
-            } else if (word.includes(childText)) {
+            } else if (word.includes(childText) && !noRepeat[currentRow-2].includes(childText)) {
                 children[i].style.backgroundColor = "yellow";
+                noRepeat[currentRow-2].push(childText);
+                console.log(noRepeat);
 
                 if ($(childText).style.backgroundColor !== "green") {
                     $(childText).style.backgroundColor = "yellow";
