@@ -9,7 +9,6 @@ let gameOverAudio = $("gameOverAudio");
 
 
 let word = WORDS[Math.floor(Math.random() * WORDS.length)]
-console.log(word);
 let isWord = "";
 let currentRow = 1;
 let currentBox = 1;
@@ -97,7 +96,6 @@ function checkRow() {
             } else if (word.includes(childText) && !noRepeat[currentRow-2].includes(childText)) {
                 children[i].style.backgroundColor = "yellow";
                 noRepeat[currentRow-2].push(childText);
-                console.log(noRepeat);
 
                 if ($(childText).style.backgroundColor !== "green") {
                     $(childText).style.backgroundColor = "yellow";
