@@ -6,10 +6,11 @@ const keyboard = document.querySelector(".keyContainer");
 let winAudio = $("winAudio");
 let letterAudio = $("letterAudio");
 let gameOverAudio = $("gameOverAudio");
+let finished = false;
 
 
 let word = WORDS[Math.floor(Math.random() * WORDS.length)]
-console.log(word);
+// console.log(word);
 let isWord = "";
 let currentRow = 1;
 let currentBox = 1;
@@ -29,7 +30,6 @@ function fTempStr () {
 
 function removeItemFromArr(item) {
     var i = str.indexOf(item);
-    console.log(i);
     if (i !== -1) {
         str.splice(i, 1);
     }
@@ -48,11 +48,12 @@ function handleClick(key) {
         deleteLetter();
     }
     else if (key === 'ENTER') {
-        if (currentBox === 6 && currentRow < 6) {
+        if (currentBox === 6 && currentRow < 6 && finished === false) {
             isWord = values[currentRow - 1].join("");
             if (isWord === word) {
                 checkRow();
                 winner();
+                finished = true;
             }
             else if (WORDS.includes(isWord)) {
                 checkRow();
@@ -67,8 +68,9 @@ function handleClick(key) {
                 }
             }
         }
-        if (currentRow === 6) {
+        if (currentRow === 6 && finished === false) {
             gameOver();
+            finished = true;
         }
     }
     else {
