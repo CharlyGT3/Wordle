@@ -9,6 +9,7 @@ let gameOverAudio = $("gameOverAudio");
 
 
 let word = WORDS[Math.floor(Math.random() * WORDS.length)]
+console.log(word);
 let isWord = "";
 let currentRow = 1;
 let currentBox = 1;
@@ -19,7 +20,20 @@ let values = [
     ['', '', '', '', ''],
     ['', '', '', '', '']
 ];
-let noRepeat = [[],[],[],[],[]];
+// let noRepeat = [[],[],[],[],[]];
+let str = word.split("");
+function fTempStr () {
+    let tempStr = word.split(""); 
+    str = tempStr;
+};
+
+function removeItemFromArr(item) {
+    var i = str.indexOf(item);
+    console.log(i);
+    if (i !== -1) {
+        str.splice(i, 1);
+    }
+}
 
 keys.forEach(key => {
     const buttonElement = document.createElement('button');
@@ -43,8 +57,14 @@ function handleClick(key) {
             else if (WORDS.includes(isWord)) {
                 checkRow();
                 nextRow();
+                fTempStr();
             }
             else {
+                let children = $("row-" + currentRow).children;
+                for (let i = 0; i < children.length; i++) {
+                    children[i].classList.add("not");
+                setTimeout(() => children[i].classList.remove("not"), 500);
+                }
             }
         }
         if (currentRow === 6) {
@@ -61,6 +81,8 @@ function addLetter(key) {
         letterAudio.play();
         const box = $("box-" + currentBox + "-row-" + currentRow);
         box.textContent = key;
+        box.classList.add("zoom");
+        setTimeout(() => box.classList.remove("zoom"), 250);
         values[currentRow - 1][currentBox - 1] = key;
         currentBox += 1;
     }
@@ -86,25 +108,30 @@ function checkRow() {
 
     for (let i = 0; i < children.length; i++) {
         let childText = children[i].textContent;
+
         setTimeout(() => {
             children[i].classList.add("flip");
+        }, 150 * [i])
 
-            if (childText === word[i]) {
-                children[i].style.backgroundColor = "green";
-                $(childText).style.backgroundColor = "green";
+        if (childText === word[i] && str.includes(childText)) {
+            children[i].style.backgroundColor = "var(--colorGreen)";
+            $(childText).style.backgroundColor = "var(--colorGreen)";
+            removeItemFromArr(childText);
+            // noRepeat[currentRow-2].push(childText);
 
-            } else if (word.includes(childText) && !noRepeat[currentRow-2].includes(childText)) {
-                children[i].style.backgroundColor = "yellow";
-                noRepeat[currentRow-2].push(childText);
+        } else if (str.includes(childText)) {
+            children[i].style.backgroundColor = "var(--colorYellow)";
+            removeItemFromArr(childText);
+            // noRepeat[currentRow-2].push(childText);
 
-                if ($(childText).style.backgroundColor !== "green") {
-                    $(childText).style.backgroundColor = "yellow";
-                }
-
-            } else {
-                children[i].style.backgroundColor = "gray";
+            if ($(childText).style.backgroundColor !== "var(--colorGreen)") {
+                $(childText).style.backgroundColor = "var(--colorYellow)";
             }
-        }, 500 * [i])
+
+        } else {
+            children[i].style.backgroundColor = "var(--colorDarkGray)";
+            $(childText).style.backgroundColor = "var(--colorDarkGray)";
+        }
     }
 }
 

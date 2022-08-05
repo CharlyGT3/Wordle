@@ -87,6 +87,10 @@ btnStart.addEventListener("click", () => {
             case 'l':
                 $('L').click()
                 break;
+            case 'Ñ':
+            case 'ñ':
+                $('Ñ').click()
+                break;
             case 'Z':
             case 'z':
                 $('Z').click()
