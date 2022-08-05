@@ -20,7 +20,7 @@ export const keys = [
     'J',
     'K',
     'L',
-    'ñ',
+    'Ñ',
     'ENTER',
     'Z',
     'X',
