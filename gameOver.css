@@ -15,15 +15,17 @@
     justify-content: center;
     align-items: center;
     width: 250px;
-    height: 200px;
+    height: 250px;
     border-radius: 20px;
     background-color: var(--colorTheme1);
 }
 
 .gameOverContainer > div {
     background-color: transparent;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
+    text-align: center;
+    margin: 10px;
 }
 
 .gameOverContainer > button {
@@ -35,4 +37,8 @@
     font-weight: bold;
     margin: 10px;
     background-color: var(--colorDarkGray);
+}
+
+#textGO {
+    font-size: 26px;
 }
