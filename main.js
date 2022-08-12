@@ -14,7 +14,7 @@ let finished = false;
 
 
 let word = WORDS[Math.floor(Math.random() * WORDS.length)]
-console.log(word);
+// console.log(word);
 let isWord = "";
 let currentRow = 1;
 let currentBox = 1;
