@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle</title>
+    
+    
+    
+    
+    <link rel="shortcut icon" href="/Wordle/assets/favicon.11ba23f0.ico">
+  <script type="module" crossorigin src="/Wordle/assets/index.bf0a1d13.js"></script>
+  <link rel="stylesheet" href="/Wordle/assets/index.2dce1fba.css">
+</head>
+
+<body>
+    <h1 class="effect1">Wordle</h1>
+    <div class="menssageContainer"></div>
+    <div class="tileContainer">
+        <div id="row-1" class="row">
+            <div id="box-1-row-1" class="box effect1"></div>
+            <div id="box-2-row-1" class="box effect1"></div>
+            <div id="box-3-row-1" class="box effect1"></div>
+            <div id="box-4-row-1" class="box effect1"></div>
+            <div id="box-5-row-1" class="box effect1"></div>
+        </div>
+        <div id="row-2" class="row">
+            <div id="box-1-row-2" class="box effect1"></div>
+            <div id="box-2-row-2" class="box effect1"></div>
+            <div id="box-3-row-2" class="box effect1"></div>
+            <div id="box-4-row-2" class="box effect1"></div>
+            <div id="box-5-row-2" class="box effect1"></div>
+        </div>
+        <div id="row-3" class="row">
+            <div id="box-1-row-3" class="box effect1"></div>
+            <div id="box-2-row-3" class="box effect1"></div>
+            <div id="box-3-row-3" class="box effect1"></div>
+            <div id="box-4-row-3" class="box effect1"></div>
+            <div id="box-5-row-3" class="box effect1"></div>
+        </div>
+        <div id="row-4" class="row">
+            <div id="box-1-row-4" class="box effect1"></div>
+            <div id="box-2-row-4" class="box effect1"></div>
+            <div id="box-3-row-4" class="box effect1"></div>
+            <div id="box-4-row-4" class="box effect1"></div>
+            <div id="box-5-row-4" class="box effect1"></div>
+        </div>
+        <div id="row-5" class="row">
+            <div id="box-1-row-5" class="box effect1"></div>
+            <div id="box-2-row-5" class="box effect1"></div>
+            <div id="box-3-row-5" class="box effect1"></div>
+            <div id="box-4-row-5" class="box effect1"></div>
+            <div id="box-5-row-5" class="box effect1"></div>
+        </div>
+    </div>
+    <div id="start">
+        <div class="startContainer">
+            <input type="text" id="name" placeholder="Your name here" maxlength="8">
+            <button id="btnStart">Start Game</button>
+        </div>
+    </div>
+    <div id="gameOver">
+        <div class="gameOverContainer">
+            <div id="textGO">Game Over</div>
+            <button id="btnRestartGO">Restart</button>
+            <div id="winnersPodium"></div>
+        </div>
+    </div>
+    <div id="winner">
+        <div class="winnerContainer">
+            <div>Congratulations!!</div>
+            <div>Winner!!</div>
+            <button id="btnRestartW">Restart</button>
+            <div id="youTime"></div>
+            <div id="winnersTimes"></div>
+        </div>
+    </div>
+    <div class="keyContainer"></div>
+    
+    
+    <audio id="winAudio" class="audio" controls>
+        <source type="audio/wav" src="/Wordle/assets/Winner.7447421e.mp3">
+    </audio>
+    <audio id="letterAudio" class="audio" controls>
+        <source type="audio/wav" src="data:audio/mpeg;base64,SUQzAwAAAAAAUVRZRVIAAAAFAAAAMjAyMkNPTU0AAAAdAAAAZW5nAE1vZGlmaWVkIGJ5IEZMIFN0dWRpbyAyMFRFTkMAAAAFAAAATEFNRVRCUE0AAAACAAAAMP/6kGyVhgAAAthCUCUFAAAAAA0goAABG+lzVfmsAAAAADSDAAAAICyIAAxjG49yAAGNEREREq/hET4RESuXFBQxE//5d7///93d3d3dEQgUFDER3d9ERHe//3cXFxcXPvdyw7BWAuADADgvBYDQGgoKGAh5cEAQ/+AwfB8/+XB8H62Zl4dmM0IFIbEoQAAJWSi6CWwFoiYtwpGyJMAVBmPI2U0V8qYggkYoQtVuTrtjXIYfvs2FTcePBIigcYCKLk/ouOiUYBERCRA4g1hEQLr7UdKkOtBXjew+kQXzLZlqzMCJRaIym9lSSz60sQPcdUihi9Ghdq8lWXcKS9VqQ+685evU8qlLIsv/f/7kPxY5EJJH39iEud21ejW7cZYL+u//75WVK8L10l+/Dc3XdujIRLObZ+oS+dyAWzQQzb+1f1v8q28b/6/CUUkvz+vn3edTV/LeNXdm7kXjOvL//0LVBBSgt1Jp6EIViFkIWEPNR9U4KR00jLVTzWtVU5pE84sHZbBpS6jzFnQaGB3/1HhE/rcWPf/g1DsqdR/ZEUFR4P/6kmx+tSAP8hQWxdcEwAAAAA0g4AABAAABpAAAACAAADSAAAAEr+IlTEFNRTMuOTkuNVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVU=">
+    </audio>
+    <audio id="gameOverAudio" class="audio" controls>
+        <source type="audio/wav" src="/Wordle/assets/GameOver.f1198cf1.mp3">
+    </audio>
+</body>
+
+</html>
