@@ -1,1 +1,3 @@
-base:'/Wordle/'
+export default {
+    base:'/Wordle/'
+  }
